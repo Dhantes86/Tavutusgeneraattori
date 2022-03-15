@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<script>
+    const syllableRegex = /[^aeiouyäö]*[aeiouyäö]+(?:[^aeiouyäö]*$|[^aeiouyäö](?=[^aeiouyäö]))?/gi;
+
+function tavuta(words) {
+    return words.match(syllableRegex);
+}
+function lause()
+{
+varit=document.getElementById("kirjoita").value;
+document.getElementById("sana").innerHTML=varit; 
+document.getElementById("sana").innerHTML=[varit].map(tavuta);
+
+}
+function korvaa()
+{
+var text = document.getElementById("sana").innerHTML; 
+document.getElementById("sana").innerHTML = text.replace(",", "-");
+
+let alkuperainensana = document.getElementById("sana").innerHTML; 
+let lopullinensana = alkuperainensana.replace(/,/g, "-");
+document.getElementById("sana").innerHTML = lopullinensana;
+}
+</script>
+</head>
+<body>
+<h1>Tavutettava sana:</h1>
+<p id="sana"></p>
+<input id="kirjoita" type="text">
+<button onclick="lause();korvaa()"type="button">convert</button>
+
+
+</body>
+</html>
